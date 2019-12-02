@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template="base.xhtml">
+	<h1>Consulta</h1>
+
+<ui:define name="body">
+ <p:poll interval="5" listener="#{consultaBean.init}" update="agendamento" />
+	<h:panelGroup id="agendamento">
+		<div class="card">
+			<div class="card-body">
+				<div class="ui-g">
+					<div class="ui-g-10 ui-md-12">
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">Nome</th>
+									<th scope="col">Exame</th>
+									<th scope="col">Convenio</th>
+									<th scope="col">Medico</th>
+									<th scope="col">Data</th>
+								</tr>
+							</thead>
+							<tbody>
+								<ui:repeat var="list"
+									value="#{consultaBean.listaClienteConsulta}">
+									<tr class="table-active">
+										<td>${list.nomeCliente}</td>
+										<td>${list.exame}</td>
+										<td>${list.convenio}</td>
+										<td>${list.medico}</td>
+										<td>${list.dataExame}</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>
+</ui:define>
+</ui:composition>
+
+</html>
